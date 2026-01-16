@@ -26,6 +26,10 @@ const App = () => {
   return (
     <div className='app-container'>
       <h2>Driving Test App</h2>
+      <p>
+        <strong>Current Question Index:</strong>
+        {state.currentQuestion}
+      </p>
       <div style={{ marginBottom: "1rem" }}>
         <button onClick={() => console.log(state)}>Log State</button>
         <button onClick={() => console.log(state.answers)}>Log Answer</button>
@@ -43,6 +47,8 @@ const App = () => {
         <button onClick={() => dispatch({ type: "ANSWER", payload: 3 })}>
           ANSWER 3
         </button>
+        <button onClick={() => dispatch({ type: "NEXT" })}>NEXT</button>
+        <button onClick={() => dispatch({ type: "PREV" })}>PREV</button>
       </div>
     </div>
   );

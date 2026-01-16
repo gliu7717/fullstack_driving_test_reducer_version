@@ -18,6 +18,16 @@ export function quizReducer(state, action, questionsLength) {
         ...state,
         currentQuestion: Math.max(state.currentQuestion - 1, 0),
       };
+    case "SUBMIT":
+      return {
+        ...state,
+        submitted: true,
+      };
+    case "TICK":
+      return {
+        ...state,
+        timeLeft: state.timeLeft - 1,
+      };
 
     default:
       return state;

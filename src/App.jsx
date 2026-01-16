@@ -49,6 +49,8 @@ const App = () => {
         </button>
         <button onClick={() => dispatch({ type: "NEXT" })}>NEXT</button>
         <button onClick={() => dispatch({ type: "PREV" })}>PREV</button>
+        <button onClick={() => dispatch({ type: "SUBMIT" })}>SUBMIT</button>
+        <button onClick={() => dispatch({ type: "TICK" })}>TICK</button>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import QuestionHeader from "./QuestionHeader";
 import QuestionText from "./QuestionText";
 import AnswerOptions from "./AnswerOptions";
 import MediaDisplay from "./MediaDisplay";
+import NavigationControls from "./NavigationControls";
 
 import { Card } from "./ui/Card";
 
@@ -39,6 +40,11 @@ const QuestionView = ({
           />
         )}
       </div>
+      <NavigationControls
+        currentQuestion={currentQuestion}
+        totalQuestions={totalQuestions}
+        dispatch={dispatch}
+      />
     </Card>
   );
 };

@@ -2,6 +2,8 @@ import { useReducer } from "react";
 import questions from "./data/questions";
 import { quizReducer } from "./state/quizReducer";
 import "./App.css";
+import TempComonent from "./components/tempComponent";
+import QuestionView from "./components/QuestionView";
 
 // The initial state of the quiz when the app starts
 const initialState = {
@@ -22,35 +24,30 @@ const App = () => {
     (state, action) => quizReducer(state, action, questions.length),
     initialState
   );
+  // Get the current question object based on index
+  const q = questions[state.currentQuestion];
+  // Create the question view while quiz is ongoing
+  const question_view = (
+    <QuestionView
+      q={q}
+      currentQuestion={state.currentQuestion}
+      totalQuestions={questions.length}
+      selectedAnswer={state.answers[state.currentQuestion]}
+      timeLeft={state.timeLeft}
+      onAnswer={() => {}}
+      dispatch={dispatch}
+    />
+  );
+
+  // Create the result view when the quiz is done
+  const result_view = <></>;
 
   return (
     <div className='app-container'>
-      <h2>Driving Test App</h2>
-      <p>
-        <strong>Current Question Index:</strong>
-        {state.currentQuestion}
-      </p>
-      <div style={{ marginBottom: "1rem" }}>
-        <button onClick={() => console.log(state)}>Log State</button>
-        <button onClick={() => console.log(state.answers)}>Log Answer</button>
-      </div>
-      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-        <button onClick={() => dispatch({ type: "ANSWER", payload: 0 })}>
-          ANSWER 0
-        </button>
-        <button onClick={() => dispatch({ type: "ANSWER", payload: 1 })}>
-          ANSWER 1
-        </button>
-        <button onClick={() => dispatch({ type: "ANSWER", payload: 2 })}>
-          ANSWER 2
-        </button>
-        <button onClick={() => dispatch({ type: "ANSWER", payload: 3 })}>
-          ANSWER 3
-        </button>
-        <button onClick={() => dispatch({ type: "NEXT" })}>NEXT</button>
-        <button onClick={() => dispatch({ type: "PREV" })}>PREV</button>
-        <button onClick={() => dispatch({ type: "SUBMIT" })}>SUBMIT</button>
-        <button onClick={() => dispatch({ type: "TICK" })}>TICK</button>
+      <TempComonent state={state} dispatch={dispatch} />
+      {/* Main content switches based on submission */}
+      <div className='quiz-content'>
+        {state.submitted ? result_view : question_view}
       </div>
     </div>
   );

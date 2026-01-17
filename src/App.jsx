@@ -4,6 +4,7 @@ import { quizReducer } from "./state/quizReducer";
 import "./App.css";
 import TempComonent from "./components/tempComponent";
 import QuestionView from "./components/QuestionView";
+import ProgressBar from "./components/ProgressBar";
 
 // The initial state of the quiz when the app starts
 const initialState = {
@@ -51,6 +52,9 @@ const App = () => {
 
   return (
     <div className='app-container'>
+      {/* Progress bar at the top */}
+      <ProgressBar current={state.currentQuestion} total={questions.length} />
+
       <TempComonent state={state} dispatch={dispatch} />
       {/* Main content switches based on submission */}
       <div className='quiz-content'>

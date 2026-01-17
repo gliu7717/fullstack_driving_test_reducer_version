@@ -6,6 +6,7 @@ import TempComonent from "./components/tempComponent";
 import QuestionView from "./components/QuestionView";
 import ProgressBar from "./components/ProgressBar";
 import AppBanner from "./components/AppBanner";
+import ResultView from "./components/ResultView";
 
 // The initial state of the quiz when the app starts
 const initialState = {
@@ -48,8 +49,15 @@ const App = () => {
     />
   );
 
+  // Calculate the total score by comparing user answers to correct answers
+  const score = state.answers.reduce((acc, answer, idx) => {
+    return answer === questions[idx].correctAnswer ? acc + 1 : acc;
+  }, 0);
+
   // Create the result view when the quiz is done
-  const result_view = <></>;
+  const result_view = (
+    <ResultView score={score} questions={questions} answers={state.answers} />
+  );
 
   return (
     <div className='app-container'>

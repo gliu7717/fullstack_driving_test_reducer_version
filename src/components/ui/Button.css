@@ -1,0 +1,47 @@
+.button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0.5rem;
+  white-space: "pre-wrap";
+}
+
+/* If the button is not selected => Blue Theme (Outline) */
+.button.outline {
+  background-color: #ffffff;
+  border: 2px solid #007bff; /* Standard Blue */
+  color: #007bff; /* Standard Blue */
+}
+.button.outline:hover {
+  background-color: #e6f0ff; /* Lighter Blue for hover */
+}
+
+/* If the button is selected => Blue Theme (Selected) */
+.button.selected {
+  background-color: #007bff; /* Standard Blue */
+  color: #ffffff;
+}
+
+/* Teal/Turquoise Theme for Navigation Controls */
+.button.navigation-outline {
+  background-color: #ffffff;
+  border: 2px solid #20c997; /* Teal border */
+  color: #20c997; /* Teal text */
+}
+
+.button.navigation-outline:hover {
+  background-color: #e0fff6; /* Lighter Teal for hover */
+}
+
+.button.navigation-selected {
+  background-color: #20c997; /* Solid Teal background */
+  color: #ffffff;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

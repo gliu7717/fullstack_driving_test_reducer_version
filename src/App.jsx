@@ -26,6 +26,13 @@ const App = () => {
   );
   // Get the current question object based on index
   const q = questions[state.currentQuestion];
+
+  // Handle user selecting an answer
+  const handleAnswer = (index) => {
+    // Dispatch an ANSWER action with selected index
+    dispatch({ type: "ANSWER", payload: index });
+  };
+
   // Create the question view while quiz is ongoing
   const question_view = (
     <QuestionView
@@ -34,7 +41,7 @@ const App = () => {
       totalQuestions={questions.length}
       selectedAnswer={state.answers[state.currentQuestion]}
       timeLeft={state.timeLeft}
-      onAnswer={() => {}}
+      onAnswer={handleAnswer}
       dispatch={dispatch}
     />
   );

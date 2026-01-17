@@ -1,5 +1,6 @@
 import QuestionHeader from "./QuestionHeader";
 import QuestionText from "./QuestionText";
+import AnswerOptions from "./AnswerOptions";
 
 import { Card } from "./ui/Card";
 
@@ -22,6 +23,11 @@ const QuestionView = ({
       <div style={{ display: "flex", gap: "1rem", flexDirection: "row" }}>
         <div style={{ flex: 1 }}>
           <QuestionText text={q.question} as='p' />
+          <AnswerOptions
+            options={q.options}
+            selectedIndex={selectedAnswer}
+            onSelect={onAnswer}
+          />
         </div>
       </div>
     </Card>
